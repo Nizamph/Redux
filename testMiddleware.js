@@ -1,8 +1,10 @@
-function testMiddle(store) {
+function testMiddle({dispatch,getState}) {
   return (next) => {
     return (action) => {
-         console.log("hello",action)
+        console.log(getState())
          next(action)
+        console.log(getState())
+        console.log("------------------------")
     }
   }
 }
