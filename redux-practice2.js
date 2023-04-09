@@ -1,6 +1,8 @@
 import redux from 'redux'
 import testMiddle from './testMiddleware.js'
+import logger from 'redux-logger'
 import { applyMiddleware } from 'redux'
+
 const rcbVsMi = (state = {total:0,wickets:0},action) => {
     if(action.type==="four") {
       return {
@@ -42,7 +44,8 @@ const rcbVsMi = (state = {total:0,wickets:0},action) => {
     return state;
 }
 
-const store = redux.createStore(rcbVsMi,applyMiddleware(testMiddle))
+
+const store = redux.createStore(rcbVsMi,applyMiddleware(logger.default))
 
 console.log('initial state',store.getState())//runs and wickets before start the match
 
